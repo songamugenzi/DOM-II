@@ -1,4 +1,5 @@
-// Mouseover - done
+// 1. Mouseover - done
+
 const theH2s = document.querySelectorAll('h2');
 function onMouseover(event) {
     theH2s.forEach(title => title.style.color = 'teal');
@@ -9,7 +10,8 @@ function onMouseover(event) {
 document.addEventListener('mouseover', onMouseover)
 
 
-// Keydown - done
+// 2. Keydown - done
+
 const imageTags = document.getElementsByTagName('img');
 function onKeydown(event) {
     if (event.key === 'r') {
@@ -20,7 +22,8 @@ function onKeydown(event) {
 document.addEventListener('keydown', onKeydown)
 
 
-// Wheel - done
+// 3. Wheel - done
+
 const sectionText = document.querySelectorAll('p');
 function onWheel(event) {
     sectionTextArr = Array.from(sectionText);
@@ -30,64 +33,15 @@ function onWheel(event) {
 document.addEventListener('wheel', onWheel)
 
 
-// Drag / Drop !!!!!!
-function dragDrop(event) {
+// 4. load - done
 
-}
-// document.addEventListener('drag / drop', dragDrop)
-
-// const imagesContainer = document.querySelectorAll('.img-content');
-// imagesContainer.forEach(function (imageDiv) {
-//     imageDiv.setAttribute('draggable', 'true');
-//     imageDiv.addEventListener('drag', imagesContainer);
-// });
-// const dragSpace = document.querySelectorAll('.content-section');
-// dragSpace.forEach(function (divSpace) {
-//     imageDiv.setAttribute('draggable', 'true');
-//     imageDiv.addEventListener('drag', dragSpace);
-// });
-
-// function dragStart(event) {
-//     this.className += ' hold';
-//     setTimeout(() => (this.className = 'invisible'), 0);
-// }
-
-// function dragEnd(event) {
-//     this.className = 'fill';
-// }
-
-// function dragOver(event) {
-
-// }
-
-// function dragDrop(event) {
-
-// }
-
-
-
-// load - done
 const loadPage = window.addEventListener('load', (event) => {
-console.log('page is fully loaded');
+    // console.log('page is fully loaded');
 });
 
 
-// // Focus !!!!!!
-// const newDivContainer = document.querySelector('.content-destination');
+// 5. Resize - done
 
-// function onFocus(event) {
-//     var newForm = document.newDivContainer.createElement('form');
-//     var newInput = document.newForm.createElement('input');
-//     var newContent = document.createTextNode('Thank you for visiting!');
-//     newForm.appendChild(newContent);
-
-//     var currentDiv = newDivContainer.img;
-//     document.body.insertBefore(newInput, currentDiv);
-// }
-// newInput.addEventListener('focus', onFocus);
-
-
-// // Resize - done
 function onResize(event) {
     theH2sArr = Array.from(theH2s);
     theH2s.forEach(title => title.style.fontSize = '12px');
@@ -98,7 +52,8 @@ function onResize(event) {
 window.addEventListener('resize', onResize);
 
 
-// // Scroll - done
+// 6. Scroll - done
+
 window.addEventListener('scroll', () => {
     const scrollable = document.documentElement.scrollHeight - window.innerHeight;
     const scrolled = window.scrollY;
@@ -109,24 +64,45 @@ window.addEventListener('scroll', () => {
 });
 
 
-// // Select !!!!
-// function onSelect(event) {
+// 7. Dblclick - done
 
-// }
-// // document.addEventListener('select', onSelect)
-// function selectedDestination(event) {
-//     const header4 = document.querySelector('h4');
-//     const selection = event.target.value.substring(event.target.selectionStart, event.target.selectionEnd);
-//     header4.textContent = `You selected: ${selection}`;
-//   }
-  
-//   const selectedArea = document.querySelectorAll('destination');
-//   selectedArea.onselect = selectedDestination;
-// window.addEventListener('select', selectedDestination);
-
-// // Dblclick - done
 const buttonsClick2 = document.querySelector('.btn');
 function onDblclick(event) {
     document.body.style.background = 'orange';
 };
 buttonsClick2.addEventListener('dblclick', onDblclick);
+
+
+// 8. Keyup
+
+const keyPressed = document.addEventListener('keyup', function (e) {
+    console.log(e.key)
+    if (e.keyCode === 83) {
+        const header = document.querySelector('header')
+        console.log(header)
+        header.style.background = 'red'
+    }
+})
+
+
+// 9. Copy
+
+document.addEventListener('copy', function (e) {
+    console.log(e.srcElement.localName)
+    const header = document.querySelector(`${e.srcElement.localName}`)
+    console.log(header)
+    header.style.background = 'red'
+})
+
+// 10. LoadEnd
+
+document.addEventListener('mousemove', function (e) {
+    console.log(e)
+    const body = document.querySelector('body')
+    if (e.clientX > 500) {
+        body.style.background = 'pink'
+
+    } else {
+        body.style.background = 'initial'
+    }
+})
